@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Hypnotoid.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Hypnotoid down0000" x="0" y="0" width="452" height="328"/>
+	<SubTexture name="Hypnotoid down0001" x="0" y="0" width="452" height="328"/>
+	<SubTexture name="Hypnotoid down0002" x="452" y="0" width="452" height="320" frameX="0" frameY="-4" frameWidth="452" frameHeight="328"/>
+	<SubTexture name="Hypnotoid down0003" x="452" y="0" width="452" height="320" frameX="0" frameY="-4" frameWidth="452" frameHeight="328"/>
+	<SubTexture name="Hypnotoid down0004" x="452" y="0" width="452" height="320" frameX="0" frameY="-4" frameWidth="452" frameHeight="328"/>
+	<SubTexture name="Hypnotoid down0005" x="452" y="0" width="452" height="320" frameX="0" frameY="-4" frameWidth="452" frameHeight="328"/>
+	<SubTexture name="Hypnotoid down0006" x="452" y="0" width="452" height="320" frameX="0" frameY="-4" frameWidth="452" frameHeight="328"/>
+	<SubTexture name="Hypnotoid down0007" x="452" y="0" width="452" height="320" frameX="0" frameY="-4" frameWidth="452" frameHeight="328"/>
+	<SubTexture name="Hypnotoid down0008" x="452" y="0" width="452" height="320" frameX="0" frameY="-4" frameWidth="452" frameHeight="328"/>
+	<SubTexture name="Hypnotoid idle0000" x="904" y="0" width="450" height="358" frameX="0" frameY="-1" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0001" x="1354" y="0" width="448" height="358" frameX="-1" frameY="-6" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0002" x="0" y="358" width="450" height="357" frameX="-1" frameY="-10" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0003" x="450" y="358" width="448" height="358" frameX="-2" frameY="-15" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0004" x="898" y="358" width="449" height="358" frameX="-3" frameY="-20" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0005" x="1347" y="358" width="450" height="358" frameX="-3" frameY="-25" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0006" x="0" y="716" width="449" height="358" frameX="-4" frameY="-30" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0007" x="449" y="716" width="449" height="346" frameX="-5" frameY="-41" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0008" x="898" y="716" width="449" height="346" frameX="-6" frameY="-46" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0009" x="1347" y="716" width="454" height="324" frameX="-7" frameY="-64" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0010" x="0" y="1074" width="455" height="326" frameX="-6" frameY="-56" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0011" x="455" y="1074" width="450" height="342" frameX="-5" frameY="-43" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0012" x="905" y="1074" width="449" height="358" frameX="-4" frameY="-30" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0013" x="1354" y="1074" width="449" height="358" frameX="-3" frameY="-25" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0014" x="0" y="1432" width="449" height="358" frameX="-3" frameY="-20" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0015" x="449" y="1432" width="450" height="358" frameX="-2" frameY="-15" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0016" x="899" y="1432" width="450" height="357" frameX="-1" frameY="-10" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0017" x="1349" y="1432" width="450" height="357" frameX="0" frameY="-5" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0018" x="0" y="1790" width="449" height="357" frameX="0" frameY="0" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid idle0019" x="0" y="1790" width="449" height="357" frameX="0" frameY="0" frameWidth="461" frameHeight="392"/>
+	<SubTexture name="Hypnotoid left0000" x="449" y="1790" width="496" height="382" frameX="-6" frameY="0" frameWidth="509" frameHeight="382"/>
+	<SubTexture name="Hypnotoid left0001" x="449" y="1790" width="496" height="382" frameX="-6" frameY="0" frameWidth="509" frameHeight="382"/>
+	<SubTexture name="Hypnotoid left0002" x="945" y="1790" width="509" height="382"/>
+	<SubTexture name="Hypnotoid left0003" x="945" y="1790" width="509" height="382"/>
+	<SubTexture name="Hypnotoid left0004" x="945" y="1790" width="509" height="382"/>
+	<SubTexture name="Hypnotoid left0005" x="945" y="1790" width="509" height="382"/>
+	<SubTexture name="Hypnotoid left0006" x="945" y="1790" width="509" height="382"/>
+	<SubTexture name="Hypnotoid left0007" x="945" y="1790" width="509" height="382"/>
+	<SubTexture name="Hypnotoid left0008" x="945" y="1790" width="509" height="382"/>
+	<SubTexture name="Hypnotoid right0000" x="1454" y="1790" width="420" height="358" frameX="-7" frameY="0" frameWidth="433" frameHeight="358"/>
+	<SubTexture name="Hypnotoid right0001" x="1454" y="1790" width="420" height="358" frameX="-7" frameY="0" frameWidth="433" frameHeight="358"/>
+	<SubTexture name="Hypnotoid right0002" x="0" y="2172" width="433" height="358"/>
+	<SubTexture name="Hypnotoid right0003" x="0" y="2172" width="433" height="358"/>
+	<SubTexture name="Hypnotoid right0004" x="0" y="2172" width="433" height="358"/>
+	<SubTexture name="Hypnotoid right0005" x="0" y="2172" width="433" height="358"/>
+	<SubTexture name="Hypnotoid right0006" x="0" y="2172" width="433" height="358"/>
+	<SubTexture name="Hypnotoid right0007" x="0" y="2172" width="433" height="358"/>
+	<SubTexture name="Hypnotoid right0008" x="0" y="2172" width="433" height="358"/>
+	<SubTexture name="Hypnotoid up0000" x="433" y="2172" width="486" height="328" frameX="0" frameY="0" frameWidth="486" frameHeight="332"/>
+	<SubTexture name="Hypnotoid up0001" x="433" y="2172" width="486" height="328" frameX="0" frameY="0" frameWidth="486" frameHeight="332"/>
+	<SubTexture name="Hypnotoid up0002" x="919" y="2172" width="486" height="329" frameX="0" frameY="-3" frameWidth="486" frameHeight="332"/>
+	<SubTexture name="Hypnotoid up0003" x="919" y="2172" width="486" height="329" frameX="0" frameY="-3" frameWidth="486" frameHeight="332"/>
+	<SubTexture name="Hypnotoid up0004" x="919" y="2172" width="486" height="329" frameX="0" frameY="-3" frameWidth="486" frameHeight="332"/>
+	<SubTexture name="Hypnotoid up0005" x="919" y="2172" width="486" height="329" frameX="0" frameY="-3" frameWidth="486" frameHeight="332"/>
+	<SubTexture name="Hypnotoid up0006" x="919" y="2172" width="486" height="329" frameX="0" frameY="-3" frameWidth="486" frameHeight="332"/>
+	<SubTexture name="Hypnotoid up0007" x="919" y="2172" width="486" height="329" frameX="0" frameY="-3" frameWidth="486" frameHeight="332"/>
+	<SubTexture name="Hypnotoid up0008" x="919" y="2172" width="486" height="329" frameX="0" frameY="-3" frameWidth="486" frameHeight="332"/>
+</TextureAtlas>
