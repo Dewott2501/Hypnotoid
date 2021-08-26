@@ -52,8 +52,7 @@ class StoryMenuState extends MusicBeatState
 	
 		weekData = [
 			['Tutorial'],
-			['Overworld-Showdown'],
-
+			['Overworld-Showdown'], 
 		];
 		
 		weekCharacters = [
@@ -254,6 +253,7 @@ class StoryMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
+				FlxG.sound.music.stop(); 
 				selectWeek();
 			}
 		}

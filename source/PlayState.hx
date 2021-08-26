@@ -466,13 +466,26 @@ class PlayState extends MusicBeatState
 			curStage = 'bgCube';
 
 			defaultCamZoom = 0.70;
-
+			
 			var bg:FlxSprite = new FlxSprite(-750, -450).loadGraphic(Paths.image("bounce/bgBounce"));
 			bg.antialiasing = true;
 			bg.active = false;
 			bg.setGraphicSize(Std.int(bg.width * 1.5));
 			bg.updateHitbox();
 			add(bg);
+
+			phillyCityLights = new FlxTypedGroup<FlxSprite>();
+			add(phillyCityLights);
+
+			for (i in 0...2)
+			{
+				var light:FlxSprite = new FlxSprite(bg.x, bg.y).loadGraphic(Paths.image('bounce/win' + i));
+				light.visible = false;
+				light.antialiasing = true;
+				light.setGraphicSize(Std.int(light.width * 1.5));
+				light.updateHitbox();
+				phillyCityLights.add(light);
+			}
 		}
 		else if (stageCheck == 'school')
 		{
@@ -1918,7 +1931,7 @@ class PlayState extends MusicBeatState
 				//FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyDown);
 				//FlxG.stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyUp);
 
-				FlxG.switchState(new StoryMenuState());
+				FlxG.switchState(new DemoState());
 				sectionStart = false;
 
 				// if ()
@@ -1931,6 +1944,7 @@ class PlayState extends MusicBeatState
 
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
+
 			}
 			else
 			{
@@ -2821,11 +2835,10 @@ class PlayState extends MusicBeatState
 	{
 		wiggleShit.update(Conductor.crochet);
 		super.beatHit();
-		/*cosa que usaré más tarde idk
-		if (curBeat == 11 && curSong == 'Overworld-Showdown')
+		if (curBeat == 320 && curSong == 'Overworld-Showdown')
 			{
 				FlxG.camera.flash(FlxColor.WHITE, 1);
-			}*/
+			}
 
 		if (generatedMusic)
 		{
@@ -2947,6 +2960,19 @@ class PlayState extends MusicBeatState
 					trainCooldown = FlxG.random.int(-4, 0);
 					trainStart();
 				}
+			case "bgCube":
+				if (curBeat == 320)
+					{
+						phillyCityLights.forEach(function(light:FlxSprite)
+						{
+							light.visible = false;
+						});
+
+						curLight = (phillyCityLights.length - 1);
+
+						phillyCityLights.members[curLight].visible = true;
+						
+					}
 		}
 
 		if (curStage == "spooky" && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset)

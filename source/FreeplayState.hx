@@ -47,7 +47,7 @@ class FreeplayState extends MusicBeatState
 
 		var isDebug:Bool = true;
 
-		if (StoryMenuState.weekUnlocked[2] || isDebug)
+		if (StoryMenuState.weekUnlocked[1] || isDebug)
 			addWeek(['Overworld-Showdown'], 6, ['hypnotoid']);
 
 		// LOAD MUSIC
