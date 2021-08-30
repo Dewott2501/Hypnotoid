@@ -81,7 +81,7 @@ class TitleState extends MusicBeatState
 		bgTitle.antialiasing = true;
 		bgTitle.updateHitbox();
 
-		logoBl = new FlxSprite(-150, -100);
+		logoBl = new FlxSprite(0, -100);
 		logoBl.frames = Paths.getSparrowAtlas("logoBumpin");
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
