@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Majintoid.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Majintoid down0000" x="0" y="0" width="456" height="339" frameX="0" frameY="0" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0001" x="456" y="0" width="453" height="336" frameX="-1" frameY="-7" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0002" x="909" y="0" width="450" height="334" frameX="-3" frameY="-14" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0003" x="1359" y="0" width="448" height="332" frameX="-4" frameY="-21" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0004" x="1807" y="0" width="445" height="329" frameX="-5" frameY="-28" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0005" x="2252" y="0" width="444" height="331" frameX="-5" frameY="-29" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0006" x="2696" y="0" width="443" height="332" frameX="-5" frameY="-31" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0007" x="3139" y="0" width="442" height="334" frameX="-5" frameY="-32" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0008" x="3581" y="0" width="441" height="337" frameX="-5" frameY="-33" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0009" x="0" y="339" width="440" height="337" frameX="-6" frameY="-36" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid down0010" x="440" y="339" width="440" height="336" frameX="-6" frameY="-40" frameWidth="456" frameHeight="376"/>
+	<SubTexture name="Majintoid idle0000" x="880" y="339" width="451" height="350" frameX="0" frameY="-2" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0001" x="1331" y="339" width="448" height="350" frameX="-1" frameY="-7" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0002" x="1779" y="339" width="450" height="350" frameX="-2" frameY="-10" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0003" x="2229" y="339" width="449" height="351" frameX="-2" frameY="-15" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0004" x="2678" y="339" width="449" height="351" frameX="-3" frameY="-20" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0005" x="1779" y="339" width="450" height="350" frameX="-4" frameY="-25" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0006" x="3127" y="339" width="449" height="351" frameX="-5" frameY="-30" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0007" x="3576" y="339" width="450" height="339" frameX="-5" frameY="-41" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0008" x="0" y="690" width="455" height="339" frameX="-6" frameY="-46" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0009" x="455" y="690" width="465" height="317" frameX="-7" frameY="-64" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0010" x="920" y="690" width="469" height="319" frameX="-6" frameY="-56" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0011" x="1389" y="690" width="479" height="335" frameX="-5" frameY="-43" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0012" x="1868" y="690" width="489" height="351" frameX="-5" frameY="-30" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0013" x="2357" y="690" width="487" height="351" frameX="-4" frameY="-25" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0014" x="1779" y="339" width="450" height="350" frameX="-3" frameY="-20" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0015" x="2844" y="690" width="471" height="351" frameX="-2" frameY="-15" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0016" x="2678" y="339" width="449" height="351" frameX="-2" frameY="-10" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0017" x="880" y="339" width="451" height="350" frameX="-1" frameY="-5" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0018" x="3315" y="690" width="449" height="350" frameX="0" frameY="0" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid idle0019" x="3315" y="690" width="449" height="350" frameX="0" frameY="0" frameWidth="494" frameHeight="385"/>
+	<SubTexture name="Majintoid left0000" x="0" y="1041" width="446" height="426" frameX="-11" frameY="-9" frameWidth="457" frameHeight="435"/>
+	<SubTexture name="Majintoid left0001" x="446" y="1041" width="442" height="425" frameX="-10" frameY="-10" frameWidth="457" frameHeight="435"/>
+	<SubTexture name="Majintoid left0002" x="888" y="1041" width="438" height="425" frameX="-9" frameY="-10" frameWidth="457" frameHeight="435"/>
+	<SubTexture name="Majintoid left0003" x="1326" y="1041" width="435" height="426" frameX="-8" frameY="-8" frameWidth="457" frameHeight="435"/>
+	<SubTexture name="Majintoid left0004" x="1761" y="1041" width="431" height="428" frameX="-7" frameY="-6" frameWidth="457" frameHeight="435"/>
+	<SubTexture name="Majintoid left0005" x="2192" y="1041" width="427" height="429" frameX="-6" frameY="-5" frameWidth="457" frameHeight="435"/>
+	<SubTexture name="Majintoid left0006" x="2619" y="1041" width="423" height="430" frameX="-5" frameY="-4" frameWidth="457" frameHeight="435"/>
+	<SubTexture name="Majintoid left0007" x="3042" y="1041" width="419" height="431" frameX="-4" frameY="-2" frameWidth="457" frameHeight="435"/>
+	<SubTexture name="Majintoid left0008" x="3461" y="1041" width="418" height="435" frameX="0" frameY="0" frameWidth="457" frameHeight="435"/>
+	<SubTexture name="Majintoid right0000" x="0" y="1476" width="434" height="365" frameX="-1" frameY="0" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid right0001" x="434" y="1476" width="438" height="365" frameX="0" frameY="-1" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid right0002" x="872" y="1476" width="440" height="364" frameX="0" frameY="-3" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid right0003" x="1312" y="1476" width="443" height="365" frameX="0" frameY="-3" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid right0004" x="1755" y="1476" width="443" height="365" frameX="-2" frameY="-4" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid right0005" x="2198" y="1476" width="438" height="364" frameX="-11" frameY="-6" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid right0006" x="2636" y="1476" width="432" height="364" frameX="-21" frameY="-8" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid right0007" x="3068" y="1476" width="425" height="364" frameX="-31" frameY="-10" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid right0008" x="3493" y="1476" width="424" height="363" frameX="-36" frameY="-12" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid right0009" x="3493" y="1476" width="424" height="363" frameX="-36" frameY="-12" frameWidth="460" frameHeight="375"/>
+	<SubTexture name="Majintoid up0000" x="0" y="1841" width="487" height="333" frameX="0" frameY="-18" frameWidth="499" frameHeight="351"/>
+	<SubTexture name="Majintoid up0001" x="487" y="1841" width="484" height="330" frameX="-3" frameY="-16" frameWidth="499" frameHeight="351"/>
+	<SubTexture name="Majintoid up0002" x="971" y="1841" width="482" height="328" frameX="-6" frameY="-13" frameWidth="499" frameHeight="351"/>
+	<SubTexture name="Majintoid up0003" x="1453" y="1841" width="480" height="326" frameX="-9" frameY="-10" frameWidth="499" frameHeight="351"/>
+	<SubTexture name="Majintoid up0004" x="1933" y="1841" width="478" height="324" frameX="-12" frameY="-7" frameWidth="499" frameHeight="351"/>
+	<SubTexture name="Majintoid up0005" x="2411" y="1841" width="477" height="325" frameX="-15" frameY="-5" frameWidth="499" frameHeight="351"/>
+	<SubTexture name="Majintoid up0006" x="2888" y="1841" width="476" height="324" frameX="-18" frameY="-4" frameWidth="499" frameHeight="351"/>
+	<SubTexture name="Majintoid up0007" x="3364" y="1841" width="475" height="324" frameX="-21" frameY="-2" frameWidth="499" frameHeight="351"/>
+	<SubTexture name="Majintoid up0008" x="0" y="2174" width="475" height="324" frameX="-24" frameY="0" frameWidth="499" frameHeight="351"/>
+</TextureAtlas>
