@@ -1,5 +1,3 @@
 gf
-gf-christmas
-gf-car
-gf-pixel
 gf-bounce
+gf-endless
