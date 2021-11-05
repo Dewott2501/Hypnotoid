@@ -17,17 +17,19 @@ class Startup extends MusicBeatState
     var loadingText:FlxText;
 
     var songsCached:Bool = Main.skipsound;
-    var songs:Array<String> =   ["Overworld-Showdown"];
+    var songs:Array<String> =   ["Overworld-Showdown", "Night-Circus", "Hypnotic-Doom", "Endless"];
                                 
     //List of character graphics and some other stuff.
     //Just in case it want to do something with it later.
     var charactersCached:Bool = Main.skipcharacters;
     var characters:Array<String> =   ["BOYFRIEND",
-                                    "GF_assets", "bounce/gfBounce", "bounce/hypnotoid"];
+                                    "GF_assets", "bounce/gfBounce", "bounce/gfEndless",
+                                    "bounce/hypnotoid", "bounce/Hypnotoid3", "bounce/Hypnotoid3", "bounce/Hypnotoid-fase3nervous", "bounce/Majintoid"];
 
     var graphicsCached:Bool = Main.skipgraphics;
     var graphics:Array<String> =    ["logoBumpin", "titleBG", "gfDanceTitle", "titleEnter", "bgTitle",
-                                    "stageback", "stagefront", "stagecurtains", "bounce/bgBounce"];
+                                    "stageback", "stagefront", "stagecurtains",
+                                    "bounce/bgBounce", "bounce/win1", "bounce/dumb/bad", "bounce/endlessfnfbuthypnotoidsingit"];
 
     var cacheStart:Bool = false;
 
@@ -55,7 +57,7 @@ class Startup extends MusicBeatState
             FlxG.sound.play("assets/sounds/splashSound.ogg");   
         });
         
-        super.create();
+        super.create(); 
 
     }
 
@@ -67,7 +69,9 @@ class Startup extends MusicBeatState
             cacheStart = true;
         }
         if(splash.animation.curAnim.finished && splash.animation.curAnim.name == "end"){
-            FlxG.switchState(new TitleVidState());
+			FlxG.camera.flash(FlxColor.WHITE, 60);
+			FlxG.sound.playMusic("assets/music/klaskiiLoop.ogg", 0.75);
+			FlxG.switchState(new TitleState());
             
         }
 

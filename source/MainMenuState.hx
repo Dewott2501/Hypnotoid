@@ -22,6 +22,10 @@ class MainMenuState extends MusicBeatState
 {
 	
 	var curSelected:Int = 0;
+	var shower:FlxSprite;
+	var show:String = "";
+	public static var reRoll:Bool = true; 
+	public static var lastRoll:String = "menu1";
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	
@@ -71,6 +75,59 @@ class MainMenuState extends MusicBeatState
 		add(magenta);
 		// magenta.scrollFactor.set();
 
+		if (reRoll)
+			{
+				var random = FlxG.random.float(0,9000);
+				show = 'menu1';
+				if (random >= 1000 && random <= 3999)
+					show = 'menu2';
+				if (random >= 4000 && random <= 6999)
+					show = 'menu3';
+				lastRoll = show;
+				trace('random ' + random + ' im showin ' + show);
+			}
+			else
+				show = lastRoll;
+
+			shower = new FlxSprite(600,200);
+
+			Conductor.changeBPM(165);
+               //@author KadeDev
+              /* https://cdn.discordapp.com/attachments/618912618165305413/886765698737651793/unknown.png */
+
+			switch(show)
+			{
+				case 'menu1':
+					shower.frames = Paths.getSparrowAtlas("menuTest/ligma");
+					shower.animation.addByPrefix('idle','hypno-portrait');
+					shower.scrollFactor.set();
+					shower.x = 650;
+					shower.setGraphicSize(Std.int(shower.width * 1));
+	
+				case 'menu2':
+					shower.frames = Paths.getSparrowAtlas("menuTest/troleoBF");
+					shower.animation.addByPrefix('idle','boyfriend-portrait');
+					shower.scrollFactor.set();
+					shower.x = 10;
+					shower.y = -150;
+					shower.setGraphicSize(Std.int(shower.width * 0.5));
+
+				case 'menu3':
+					shower.frames = Paths.getSparrowAtlas("menuTest/cubo");
+					shower.animation.addByPrefix('idle','boyfriend-portrait');
+					shower.scrollFactor.set();
+					shower.x = 10;
+					shower.y = -150;
+					shower.setGraphicSize(Std.int(shower.width * 0.5));
+
+            }
+			shower.antialiasing = true;
+
+			shower.animation.play('idle');
+	
+			add(shower);
+
+
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
@@ -78,14 +135,14 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 		{
-			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 160));
+			var menuItem:FlxSprite = new FlxSprite(220, 60 + (i * 160));
 			menuItem.frames = tex;
 			
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.screenCenter(X);
+			menuItem.x-= 200;
 			menuItems.add(menuItem);
 			menuItem.scrollFactor.set();
 			menuItem.antialiasing = true;
@@ -98,7 +155,7 @@ class MainMenuState extends MusicBeatState
 		versionText.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionText);
 
-		keyWarning = new FlxText(5, FlxG.height - 21 + 16, 0, "If your controls aren't working, try pressing BACKSPACE to reset them.", 16);
+		keyWarning = new FlxText(5, FlxG.height - 21 + 16, 0, "If your controls aren't working, try pressing P to reset them.", 16);
 		keyWarning.scrollFactor.set();
 		keyWarning.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		keyWarning.alpha = 0;
@@ -118,6 +175,12 @@ class MainMenuState extends MusicBeatState
 	}
 
 	var selectedSomethin:Bool = false;
+
+	var mostrar:FlxTween;
+	function cancelTweens()
+		{
+			mostrar.cancel();
+		}
 
 	override function update(elapsed:Float)
 	{
@@ -141,11 +204,16 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
-			if (FlxG.keys.justPressed.BACKSPACE)
+			if (FlxG.keys.justPressed.P)
 			{
 				KeyBinds.resetBinds();
 				FlxG.switchState(new MainMenuState());
 			}
+			
+			if (FlxG.keys.justPressed.BACKSPACE)
+				{
+					FlxG.switchState(new TitleState());
+				}
 
 			if (controls.BACK)
 			{
@@ -156,20 +224,12 @@ class MainMenuState extends MusicBeatState
 			{
 			
 				//Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0);
-			
-				if (optionShit[curSelected] == 'donate')
-				{
-					#if linux
-					Sys.command('/usr/bin/xdg-open', ["https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game", "&"]);
-					#else
-					FlxG.openURL('https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game');
-					#end
-				}
-				
-				else
 				{
 					selectedSomethin = true;
 					FlxG.sound.play('assets/sounds/confirmMenu' + TitleState.soundExt);
+					mostrar = FlxTween.tween(shower,{alpha: 0, y: shower.y + 56}, 1 ,{ease: FlxEase.expoOut, startDelay: 0.5});
+					mostrar = FlxTween.tween(versionText,{alpha: 0}, 1 ,{ease: FlxEase.expoOut, startDelay: 0.5});
+					mostrar = FlxTween.tween(keyWarning,{alpha: 0}, 1 ,{ease: FlxEase.expoOut, startDelay: 0.5});
 					
 					var daChoice:String = optionShit[curSelected];
 					
@@ -212,6 +272,9 @@ class MainMenuState extends MusicBeatState
 									case 'options':
 										FlxG.switchState(new ConfigMenu());
 										trace("options time");
+									case 'donate':
+										FlxG.switchState(new Creditos());
+										trace("credits");
 								}
 							});
 						}
@@ -222,10 +285,6 @@ class MainMenuState extends MusicBeatState
 
 		super.update(elapsed);
 
-		menuItems.forEach(function(spr:FlxSprite)
-		{
-			spr.screenCenter(X);
-		});
 	}
 
 	function changeItem(huh:Int = 0)

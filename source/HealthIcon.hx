@@ -38,6 +38,9 @@ class HealthIcon extends FlxSprite
 			animation.add('monster', [19, 20, 37], 0, false, isPlayer);
 			animation.add('monster-christmas', [19, 20, 37], 0, false, isPlayer);
 			animation.add('hypnotoid', [24, 25, 24], 0, false, isPlayer);
+			animation.add('hypnoswag', [26, 27, 26], 0, false, isPlayer);
+			animation.add('hypnobad', [26, 27, 26], 0, false, isPlayer);
+			animation.add('hypnomajin', [28, 29, 28], 0, false, isPlayer);
 			animation.add('gf', [16, 49, (_id != -1) ? 49 : 35], 0, false, isPlayer);
 			animation.add('gf-car', [16, 49, 35], 0, false, isPlayer);
 			animation.add('gf-pixel', [16, 49, 35], 0, false, isPlayer);
@@ -68,6 +71,9 @@ class HealthIcon extends FlxSprite
 			animation.add('monster', [19, 20], 0, false, isPlayer);
 			animation.add('monster-christmas', [19, 20], 0, false, isPlayer);
 			animation.add('hypnotoid', [24, 25], 0, false, isPlayer);
+			animation.add('hypnoswag', [26, 27], 0, false, isPlayer);
+			animation.add('hypnobad', [26, 27], 0, false, isPlayer);
+			animation.add('hypnomajin', [28, 29], 0, false, isPlayer);
 		}
 
 		iconSize = width;

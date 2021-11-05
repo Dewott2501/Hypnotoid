@@ -9,6 +9,9 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
+import flixel.util.FlxTimer;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 
 using StringTools;
 
@@ -25,6 +28,12 @@ class FreeplayState extends MusicBeatState
 	var diffText:FlxText;
 	var lerpScore:Int = 0;
 	var intendedScore:Int = 0;
+	var effectTween:FlxTween;
+	var groundTween:FlxTween;
+	var bg:FlxSprite;
+	var bgMid:FlxSprite;
+	var bgBad:FlxSprite;
+	var bgMajin:FlxSprite;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
@@ -36,19 +45,10 @@ class FreeplayState extends MusicBeatState
 
 		openfl.Lib.current.stage.frameRate = 144;
 
-		var initSonglist = CoolUtil.coolTextFile('assets/data/freeplaySonglist.txt');
-
-		curSelected = 0;
-
-		for (i in 0...initSonglist.length)
-		{
-			songs.push(new SongMetadata(initSonglist[i], 1, 'gf'));
-		}
-
 		var isDebug:Bool = true;
 
 		if (StoryMenuState.weekUnlocked[1] || isDebug)
-			addWeek(['Overworld-Showdown'], 6, ['hypnotoid']);
+			addWeek(['Overworld-Showdown', 'Night-Circus', 'Hypnotic-Doom', 'Endless'], 6, ['hypnotoid', 'hypnotoid', 'hypnoswag', 'hypnomajin']);
 
 		// LOAD MUSIC
 		/*for(x in songs){
@@ -57,8 +57,21 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic('assets/images/menuBGBlue.png');
+		bg = new FlxSprite(1, 1).loadGraphic('assets/images/menuTest/free1.png');
+		bg.screenCenter(X);
 		add(bg);
+
+		bgMid = new FlxSprite(1, 1).loadGraphic('assets/images/menuTest/free2.png');
+		bgMid.screenCenter(X);
+		add(bgMid);
+
+		bgBad = new FlxSprite(1, 1).loadGraphic('assets/images/menuTest/free3.png');
+		bgBad.screenCenter(X);
+		add(bgBad);
+
+		bgMajin = new FlxSprite(1, 1).loadGraphic('assets/images/bounce/endlessfnfbuthypnotoidsingit.png');
+		bgMajin.screenCenter(X);
+		add(bgMajin);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -170,11 +183,6 @@ class FreeplayState extends MusicBeatState
 			changeSelection(1);
 		}
 
-		if (controls.LEFT_P)
-			changeDiff(-1);
-		if (controls.RIGHT_P)
-			changeDiff(1);
-
 		if (controls.BACK)
 		{
 			FlxG.sound.music.stop();
@@ -217,6 +225,18 @@ class FreeplayState extends MusicBeatState
 				diffText.text = "HARD";
 		}
 	}
+
+	var bgBueno:FlxTween;
+	var bgMed:FlxTween;
+	var bgMal:FlxTween;
+	var bgEndless:FlxTween;
+
+	function cancelTweens()
+		{
+			bgBueno.cancel();
+			bgMed.cancel();
+			bgMal.cancel();
+		}
 
 	function changeSelection(change:Int = 0)
 	{
@@ -261,8 +281,35 @@ class FreeplayState extends MusicBeatState
 				item.alpha = 1;
 				// item.setGraphicSize(Std.int(item.width));
 			}
+			//@author VS. Impostor V3
+			switch(songs[curSelected].songName)
+		{
+			case "Overworld-Showdown":
+
+				bgMed = FlxTween.tween(bgMid,{alpha: 0}, 0.5 ,{ease: FlxEase.expoOut});
+				bgMal = FlxTween.tween(bgBad,{alpha: 0}, 0.5 ,{ease: FlxEase.expoOut});
+				bgEndless = FlxTween.tween(bgMajin,{alpha: 0}, 0.5 ,{ease: FlxEase.expoOut});
+
+			case "Night-Circus":
+
+				bgMed = FlxTween.tween(bgMid,{alpha: 1}, 0.5 ,{ease: FlxEase.expoOut});
+				bgMal = FlxTween.tween(bgBad,{alpha: 0}, 0.5 ,{ease: FlxEase.expoOut});
+				bgEndless = FlxTween.tween(bgMajin,{alpha: 0}, 0.5 ,{ease: FlxEase.expoOut});
+				
+			case "Hypnotic-Doom":
+
+				bgMed = FlxTween.tween(bgMid,{alpha: 1}, 0.5 ,{ease: FlxEase.expoOut});
+				bgMal = FlxTween.tween(bgBad,{alpha: 1}, 0.5 ,{ease: FlxEase.expoOut});
+				bgEndless = FlxTween.tween(bgMajin,{alpha: 0}, 0.5 ,{ease: FlxEase.expoOut});
+
+			case "Endless":
+
+				bgMed = FlxTween.tween(bgMid,{alpha: 0}, 0.5 ,{ease: FlxEase.expoOut});
+				bgMal = FlxTween.tween(bgBad,{alpha: 0}, 0.5 ,{ease: FlxEase.expoOut});
+				bgEndless = FlxTween.tween(bgMajin,{alpha: 1}, 0.5 ,{ease: FlxEase.expoOut});
 		}
 	}
+}
 }
 
 class SongMetadata

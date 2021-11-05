@@ -149,6 +149,36 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
+				case 'gf-endless':
+					frames = Paths.getSparrowAtlas("bounce/gfEndless");
+					animation.addByPrefix('cheer', 'GF Cheer', 24, false);
+				    animation.addByPrefix('singLEFT', 'GF left note', 24, false);
+				    animation.addByPrefix('singRIGHT', 'GF Right Note', 24, false);
+				    animation.addByPrefix('singUP', 'GF Up Note', 24, false);
+				    animation.addByPrefix('singDOWN', 'GF Down Note', 24, false);
+				    animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+				    animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				    animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+				    animation.addByIndices('hairBlow', "GF Dancing Beat Hair blowing", [0, 1, 2, 3], "", 24);
+				    animation.addByIndices('hairFall', "GF Dancing Beat Hair Landing", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], "", 24, false);
+				    animation.addByPrefix('scared', 'GF FEAR', 24);
+	
+					addOffset('cheer');
+					addOffset('sad', 0, -21);
+					addOffset('danceLeft', 0, -9);
+					addOffset('danceRight', 0, -9);
+	
+					addOffset("singUP", 0, 4);
+					addOffset("singRIGHT", 0, -20);
+					addOffset("singLEFT", 0, -19);
+					addOffset("singDOWN", 0, -20);
+					addOffset('hairBlow', 45, -8);
+					addOffset('hairFall', 0, -9);
+	
+					addOffset('scared', -2, -17);
+	
+					playAnim('danceRight');
+
 			case 'dad':
 				// DAD ANIMATION LOADING CODE
 				frames = Paths.getSparrowAtlas("DADDY_DEAREST");
@@ -260,6 +290,52 @@ class Character extends FlxSprite
 				addOffset("singLEFT", -11, 10);
 				addOffset("singDOWN", 2, -32);
 
+				playAnim('idle');
+			case 'hypnoswag':
+				frames = Paths.getSparrowAtlas("bounce/Hypnotoid3");
+				animation.addByPrefix('idle', 'Hypnotoid idle', 24, false);
+				animation.addByPrefix('singUP', 'Hypnotoid up', 24);
+				animation.addByPrefix('singRIGHT', 'Hypnotoid right', 24);
+				animation.addByPrefix('singDOWN', 'Hypnotoid down', 24);
+				animation.addByPrefix('singLEFT', 'Hypnotoid left', 24);
+
+				addOffset('idle');
+				addOffset("singUP", -9, 50);
+				addOffset("singRIGHT", -4, 26);
+				addOffset("singLEFT", -11, 10);
+				addOffset("singDOWN", 2, -32);
+	
+				playAnim('idle');
+			case 'hypnobad':
+				frames = Paths.getSparrowAtlas("bounce/Hypnotoid-fase3nervous");
+				animation.addByPrefix('idle', 'Hypnotoid idle', 24, false);
+				animation.addByPrefix('singUP', 'Hypnotoid up', 24);
+				animation.addByPrefix('singRIGHT', 'Hypnotoid right', 24);
+				animation.addByPrefix('singDOWN', 'Hypnotoid down', 24);
+				animation.addByPrefix('singLEFT', 'Hypnotoid left', 24);
+	
+				addOffset('idle');
+				addOffset("singUP", -9, 50);
+				addOffset("singRIGHT", -4, 26);
+				addOffset("singLEFT", -11, 10);
+				addOffset("singDOWN", 2, -32);
+		
+				playAnim('idle');	
+			
+				case 'hypnomajin':
+				frames = Paths.getSparrowAtlas("bounce/Majintoid");
+				animation.addByPrefix('idle', 'Majintoid idle', 24, false);
+				animation.addByPrefix('singUP', 'Majintoid up', 24);
+				animation.addByPrefix('singRIGHT', 'Majintoid right', 24);
+				animation.addByPrefix('singDOWN', 'Majintoid down', 24);
+				animation.addByPrefix('singLEFT', 'Majintoid left', 24);
+	
+				addOffset('idle');
+				addOffset("singUP", -9, 50);
+				addOffset("singRIGHT", -4, 26);
+				addOffset("singLEFT", -11, 10);
+				addOffset("singDOWN", 2, -32);
+		
 				playAnim('idle');
 			case 'pico':
 				frames = Paths.getSparrowAtlas("Pico_FNF_assetss");
@@ -597,7 +673,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-bounce':
+				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-bounce' | 'gf-endless':
 					if (!animation.curAnim.name.startsWith('hair'))
 					{
 						danced = !danced;
@@ -628,7 +704,7 @@ class Character extends FlxSprite
 		{
 			switch (curCharacter)
 			{
-				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-bounce' | "spooky":
+				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-bounce' | 'gf-endless'| "spooky":
 					playAnim('danceRight', true, false, animation.getByName('danceRight').numFrames - 1);
 				default:
 					playAnim('idle', true, false, animation.getByName('idle').numFrames - 1);
@@ -687,6 +763,32 @@ class Character extends FlxSprite
 					case "singRIGHT":
 						playAnim(name, false, false, 2);
 				}
+			case "hypnomajin":
+				switch(name){
+					case "idle":
+						playAnim(name, false, false, 8);
+					case "singUP":
+						playAnim(name, false, false, 4);
+					case "singDOWN":
+						playAnim(name, false, false, 4);
+					case "singLEFT":
+						playAnim(name, false, false, 2);
+					case "singRIGHT":
+						playAnim(name, false, false, 2);
+					}
+				case "hypnotoid":
+					switch(name){
+						case "idle":
+							playAnim(name, false, false, 8);
+						case "singUP":
+							playAnim(name, false, false, 4);
+						case "singDOWN":
+							playAnim(name, false, false, 4);
+						case "singLEFT":
+							playAnim(name, false, false, 2);
+						case "singRIGHT":
+							playAnim(name, false, false, 2);
+							}
 
 			case "bf-car":
 				switch(name){

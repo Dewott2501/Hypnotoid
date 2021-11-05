@@ -18,6 +18,7 @@ class Note extends FlxSprite
 	public var tooLate:Bool = false;
 	public var wasGoodHit:Bool = false;
 	public var prevNote:Note;
+	public var noteType:Int = 0;
 
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
@@ -34,7 +35,7 @@ class Note extends FlxSprite
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
 
-	public function new(_strumTime:Float, _noteData:Int, ?_editor = false, ?_prevNote:Note, ?_sustainNote:Bool = false)
+	public function new(_strumTime:Float, _noteData:Int, ?_editor = false, ?_prevNote:Note, ?_sustainNote:Bool = false, ?noteType:Int = 0)
 	{
 		super();
 
@@ -60,11 +61,9 @@ class Note extends FlxSprite
 
 		noteData = _noteData;
 
-		var daStage:String = PlayState.curStage;
-
-		switch (daStage)
+		switch (PlayState.SONG.noteStyle)
 		{
-			case 'school' | 'schoolEvil':
+			case 'pixel':
 				loadGraphic('assets/images/weeb/pixelUI/arrows-pixels.png', true, 17, 17);
 
 				animation.add('greenScroll', [6]);
@@ -93,9 +92,60 @@ class Note extends FlxSprite
 					animation.add('redhold', [3]);
 					animation.add('bluehold', [1]);
 				}
+				case 'majin':
 
-				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+								frames = FlxAtlasFrames.fromSparrow('assets/images/flechas_majin.png', 'assets/images/flechas_majin.xml');
+								animation.addByPrefix('greenScroll', 'green0');
+								animation.addByPrefix('redScroll', 'red0');
+								animation.addByPrefix('blueScroll', 'blue0');
+								animation.addByPrefix('purpleScroll', 'purple0');
+ 
+								animation.addByPrefix('purpleholdend', 'pruple end hold'); //PRUPLE Its not typo in the programming, but it is a typo in adobe animate hence why its in da xml like dat
+								animation.addByPrefix('greenholdend', 'green hold end');
+								animation.addByPrefix('redholdend', 'red hold end');
+								animation.addByPrefix('blueholdend', 'blue hold end');
+ 
+								animation.addByPrefix('purplehold', 'purple hold piece');
+								animation.addByPrefix('greenhold', 'green hold piece');
+								animation.addByPrefix('redhold', 'red hold piece');
+								animation.addByPrefix('bluehold', 'blue hold piece');
+ 
+								setGraphicSize(Std.int(width * 0.7));
+								
+								updateHitbox();
+								antialiasing = true;
+		        
+				case 'normal':
+				frames = FlxAtlasFrames.fromSparrow('assets/images/NOTE_assets.png', 'assets/images/NOTE_assets.xml');
+
+				animation.addByPrefix('greenScroll', 'green0');
+				animation.addByPrefix('redScroll', 'red0');
+				animation.addByPrefix('blueScroll', 'blue0');
+				animation.addByPrefix('purpleScroll', 'purple0');
+
+				animation.addByPrefix('purpleholdend', 'pruple end hold');
+				animation.addByPrefix('greenholdend', 'green hold end');
+				animation.addByPrefix('redholdend', 'red hold end');
+				animation.addByPrefix('blueholdend', 'blue hold end');
+
+				animation.addByPrefix('purplehold', 'purple hold piece');
+				animation.addByPrefix('greenhold', 'green hold piece');
+				animation.addByPrefix('redhold', 'red hold piece');
+				animation.addByPrefix('bluehold', 'blue hold piece');
+
+				if(Config.noteGlow){
+					animation.addByPrefix('purple glow', 'Purple Active');
+					animation.addByPrefix('green glow', 'Green Active');
+					animation.addByPrefix('red glow', 'Red Active');
+					animation.addByPrefix('blue glow', 'Blue Active');
+				}
+
+				setGraphicSize(Std.int(width * 0.7));
 				updateHitbox();
+				antialiasing = true;
+		
+
+								
 
 			default:
 				frames = FlxAtlasFrames.fromSparrow('assets/images/NOTE_assets.png', 'assets/images/NOTE_assets.xml');

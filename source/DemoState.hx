@@ -33,9 +33,16 @@ class DemoState extends FlxState
 			endIt();
         }
 		else
-			FlxG.camera.fade(FlxColor.BLACK, 0.8, true);
-			end.loadGraphic(Paths.image("demoEnd"));
-			add(end);
+			switch(Config.language){
+			case "Spanish":
+			    FlxG.camera.fade(FlxColor.BLACK, 0.8, true);
+			    end.loadGraphic(Paths.image("EndS"));
+			    add(end);
+			default:
+				FlxG.camera.fade(FlxColor.BLACK, 0.8, true);
+				end.loadGraphic(Paths.image("End"));
+				add(end);
+			}
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -43,15 +50,24 @@ class DemoState extends FlxState
 		super.update(elapsed);
 		
 		if (FlxG.keys.pressed.ENTER){
+			if (PlayState.storyWeek == 0)
+				{
 			endIt();
+				}
+			else
+			finalW();
+			
 		}
-		
 	}
 	
 	
 	public function endIt(e:FlxTimer=null){
-		trace("ENDING");
+		trace("ENDING Tutorial");
 		FlxG.switchState(new StoryMenuState());
+	}
+	public function finalW(e:FlxTimer=null){
+		trace("ENDING");
+		FlxG.switchState(new Creditos());
 	}
 	
 }

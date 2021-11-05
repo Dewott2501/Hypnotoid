@@ -106,6 +106,8 @@ class ChartingState extends MusicBeatState
 	
 	var justChanged:Bool;
 
+	public static var defaultnoteStyle:String;
+
 	override function create()
 	{
 
@@ -177,6 +179,7 @@ class ChartingState extends MusicBeatState
 				notes: [],
 				bpm: 150,
 				needsVoices: true,
+				noteStyle: 'normal',
 				player1: 'bf',
 				player2: 'dad',
 				stage: 'stage',
@@ -281,6 +284,7 @@ class ChartingState extends MusicBeatState
 				player2: 'dad',
 				stage: 'stage',
 				gfVersion: 'gf',
+				noteStyle: 'normal',
 				speed: 1,
 				validScore: false
 			};
@@ -299,6 +303,7 @@ class ChartingState extends MusicBeatState
 		var characters:Array<String> = CoolUtil.coolTextFile('assets/data/characterList.txt');
 		var gfs:Array<String> = CoolUtil.coolTextFile('assets/data/gfList.txt');
 		var stages:Array<String> = CoolUtil.coolTextFile('assets/data/stageList.txt');
+		var noteStyles:Array<String> = CoolUtil.coolTextFile('assets/data/noteStyleList.txt');
 
 		player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
@@ -335,6 +340,15 @@ class ChartingState extends MusicBeatState
 		stageDropDown.selectedLabel = _song.stage;
 		
 		diffDrop.selectedLabel = "Normal";
+
+		var noteStyleDropDown = new FlxUIDropDownMenu(140, 160, FlxUIDropDownMenu.makeStrIdLabelArray(noteStyles, true), function(noteStyle:String)
+			{
+				_song.noteStyle = noteStyles[Std.parseInt(noteStyle)];
+				defaultnoteStyle = noteStyles[Std.parseInt(noteStyle)];
+			});
+		noteStyleDropDown.selectedLabel = _song.noteStyle;
+
+		var noteStyleLabel = new FlxText(10,280,64,'Note Skin');
 
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";

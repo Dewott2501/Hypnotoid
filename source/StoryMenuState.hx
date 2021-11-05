@@ -52,7 +52,7 @@ class StoryMenuState extends MusicBeatState
 	
 		weekData = [
 			['Tutorial'],
-			['Overworld-Showdown'], 
+			['Overworld-Showdown', 'Night-Circus', 'Hypnotic-Doom'], 
 		];
 		
 		weekCharacters = [

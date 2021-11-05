@@ -42,6 +42,9 @@ class ConfigMenu extends MusicBeatState
 	var randomTapTypes:Array<String> = ["never", "not singing", "always"];
 	var noCapValue:Bool;
 	var scheme:Int;
+	var languageType:String;
+	var languageTypeInt:Int;
+	var languageTypes:Array<String> = ["English", "Spanish"];
 
 	var tabKeys:Array<String> = [];
 	
@@ -60,6 +63,7 @@ class ConfigMenu extends MusicBeatState
 									"NOTE GLOW",
 									"IMPROVED HEALTH HEADS",
 									"CONTROLLER SCHEME",
+									"LANGUAGE",
 									"[EDIT KEY BINDS]"
 									];
 								
@@ -74,6 +78,7 @@ class ConfigMenu extends MusicBeatState
 									"Makes note arrows glow if they are able to be hit.",
 									"Adds low health icons for characters missing them and adds winning icons.\n[This disables modded health icons unless there is a version of the files included in the mod.]",
 									"TEMP",
+									"Change the Language in the Dialogue Box",
 									"Change key binds."
 									];
 
@@ -136,6 +141,7 @@ class ConfigMenu extends MusicBeatState
 		offsetValue = Config.offset;
 		accuracyType = Config.accuracy;
 		accuracyTypeInt = accuracyTypes.indexOf(Config.accuracy);
+
 		healthValue = Std.int(Config.healthMultiplier * 10);
 		healthDrainValue = Std.int(Config.healthDrainMultiplier * 10);
 		iconValue = Config.betterIcons;
@@ -144,9 +150,11 @@ class ConfigMenu extends MusicBeatState
 		randomTapValue = Config.ghostTapType;
 		noCapValue = Config.noFpsCap;
 		scheme = Config.controllerScheme;
+		languageType = Config.language;
+		languageTypeInt = languageTypes.indexOf(Config.language);
 		
 		var tex = FlxAtlasFrames.fromSparrow('assets/images/FNF_main_menu_assets.png', 'assets/images/FNF_main_menu_assets.xml');
-		var optionTitle:FlxSprite = new FlxSprite(0, 55);
+		var optionTitle:FlxSprite = new FlxSprite(0, 25);
 		optionTitle.frames = tex;
 		optionTitle.animation.addByPrefix('selected', "options white", 24);
 		optionTitle.animation.play('selected');
@@ -158,7 +166,7 @@ class ConfigMenu extends MusicBeatState
 		add(optionTitle);
 			
 		
-		configText = new FlxText(0, 215, 1280, "", 48);
+		configText = new FlxText(0, 185, 1280, "", 48);
 		configText.scrollFactor.set(0, 0);
 		configText.setFormat("assets/fonts/Funkin-Bold.otf", 48, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		configText.borderSize = 3;
@@ -256,7 +264,7 @@ class ConfigMenu extends MusicBeatState
 						if(FlxG.keys.justPressed.ENTER){
 							canChangeItems = false;
 							FlxG.sound.music.fadeOut(0.3);
-							Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, glowValue, randomTapValue, noCapValue, scheme);
+							Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, glowValue, randomTapValue, noCapValue, scheme, languageType);
 							AutoOffsetState.forceEasterEgg = FlxG.keys.pressed.SHIFT ? 1 : (FlxG.keys.pressed.CONTROL ? -1 : 0);
 							FlxG.switchState(new AutoOffsetState());
 						}
@@ -427,15 +435,34 @@ class ConfigMenu extends MusicBeatState
 							if (controls.ACCEPT && scheme == controlSchemes.length - 1) {
 								FlxG.sound.play('assets/sounds/scrollMenu' + TitleState.soundExt);
 								canChangeItems = false;
-								Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, glowValue, randomTapValue, noCapValue, scheme);
+								Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, glowValue, randomTapValue, noCapValue, scheme, languageType);
 								FlxG.switchState(new KeyBindMenuController());
 							}
+					case 10: //Language
+						if (controls.RIGHT_P)
+							{
+								FlxG.sound.play('assets/sounds/scrollMenu' + TitleState.soundExt);
+								languageTypeInt += 1;
+							}
+								
+							if (controls.LEFT_P)
+							{
+								FlxG.sound.play('assets/sounds/scrollMenu' + TitleState.soundExt);
+								languageTypeInt -= 1;
+							}
+								
+							if (languageTypeInt > 1)
+								languageTypeInt = 0;
+							if (languageTypeInt < 0)
+								languageTypeInt = 1;
 
-					case 10: //Binds
+							languageType = languageTypes[languageTypeInt];
+
+					case 11: //Binds
 						if (controls.ACCEPT) {
 							FlxG.sound.play('assets/sounds/scrollMenu' + TitleState.soundExt);
 							canChangeItems = false;
-							Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, glowValue, randomTapValue, noCapValue, scheme);
+							Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, glowValue, randomTapValue, noCapValue, scheme, languageType);
 							FlxG.switchState(new KeyBindMenu());
 						}
 					
@@ -461,7 +488,7 @@ class ConfigMenu extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, glowValue, randomTapValue, noCapValue, scheme);
+			Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, glowValue, randomTapValue, noCapValue, scheme, languageType);
 			exit();
 		}
 
@@ -476,7 +503,7 @@ class ConfigMenu extends MusicBeatState
 		if (FlxG.keys.justPressed.Q)
 		{
 			canChangeItems = false;
-			Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, randomTapValue, noCapValue);
+			Config.write(offsetValue, accuracyType, healthValue / 10.0, healthDrainValue / 10.0, iconValue, downValue, randomTapValue, noCapValue, languageType);
 			FlxG.switchState(new KeyBindQuick());
 		}
 		#end
@@ -544,6 +571,7 @@ class ConfigMenu extends MusicBeatState
 			case 7: return glowValue;
 			case 8: return iconValue;
 			case 9: return controlSchemes[scheme];
+			case 10: return languageType;
 
 		}
 
@@ -569,16 +597,22 @@ class ConfigMenu extends MusicBeatState
 		switch(combo){
 
 			case "KADE":
-				Config.write(offsetValue, "complex", 5, 5, iconValue, downValue, false, 2, noCapValue, scheme);
+				Config.write(offsetValue, "complex", 5, 5, iconValue, downValue, false, 2, noCapValue, scheme, "English");
 				exit();
 			case "ROZE":
-				Config.write(offsetValue, "simple", 1, 1, true, true, true, 0, noCapValue, scheme);
+				Config.write(offsetValue, "simple", 1, 1, true, true, true, 0, noCapValue, scheme, "English");
 				exit();
 			case "CVAL":
-				Config.write(offsetValue, "simple", 1, 1, iconValue, false, glowValue, 1, noCapValue, scheme);
+				Config.write(offsetValue, "simple", 1, 1, iconValue, false, glowValue, 1, noCapValue, scheme, "English");
 				exit();
 			case "GOTOHELLORSOMETHING":
 				System.exit(0); //I am very funny.
+			case "DEWOTT":
+				#if linux
+				Sys.command('/usr/bin/xdg-open', ["https://youtu.be/wioFHTzoYQI?t=351", "&"]);
+				#else
+				FlxG.openURL('https://youtu.be/wioFHTzoYQI?t=351');
+				#end
 
 		}
 

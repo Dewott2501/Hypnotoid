@@ -16,6 +16,7 @@ class Config
 	public static var ghostTapType:Int;
 	public static var noFpsCap:Bool;
 	public static var controllerScheme:Int;
+	public static var language:String;
 
 	public static function resetSettings():Void{
 
@@ -29,6 +30,7 @@ class Config
 		FlxG.save.data.ghostTapType = 0;
 		FlxG.save.data.noFpsCap = true;
 		FlxG.save.data.controllerScheme = 0;
+		FlxG.save.data.language = "English";
 		reload();
 
 	}
@@ -45,6 +47,7 @@ class Config
 		ghostTapType = FlxG.save.data.ghostTapType;
 		noFpsCap = FlxG.save.data.noFpsCap;
 		controllerScheme = FlxG.save.data.controllerScheme;
+		language = FlxG.save.data.language;
 	}
 	
 	public static function write(
@@ -57,7 +60,8 @@ class Config
 								noteGlowW:Bool,
 								ghostTapTypeW:Int,
 								noFpsCapW:Bool,
-								controllerSchemeW:Int
+								controllerSchemeW:Int,
+								languageW:String
 								):Void
 	{
 
@@ -71,6 +75,7 @@ class Config
 		FlxG.save.data.ghostTapType = ghostTapTypeW;
 		FlxG.save.data.noFpsCap = noFpsCapW;
 		FlxG.save.data.controllerScheme = controllerSchemeW;
+		FlxG.save.data.language = languageW;
 
 		FlxG.save.flush();
 		
@@ -100,6 +105,8 @@ class Config
 			FlxG.save.data.noFpsCap = true;
 		if(FlxG.save.data.controllerScheme == null)
 			FlxG.save.data.controllerScheme = 0;
+		if(FlxG.save.data.language == null)
+			FlxG.save.data.language = "English";
 
 		if(FlxG.save.data.ee1 == null)
 			FlxG.save.data.ee1 = false;

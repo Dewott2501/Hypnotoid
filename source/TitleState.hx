@@ -63,12 +63,23 @@ class TitleState extends MusicBeatState
 		PlayerSettings.init();
 
 		Main.fpsDisplay.visible = true;
+		
+		var diamond:FlxGraphic = FlxGraphic.fromClass(GraphicTransTileDiamond);
+		diamond.persist = true;
+		diamond.destroyOnNoUse = false;
+
+		FlxTransitionableState.defaultTransIn = new TransitionData(FADE, FlxColor.BLACK, 1, new FlxPoint(0, -1), {asset: diamond, width: 32, height: 32},
+			new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
+		FlxTransitionableState.defaultTransOut = new TransitionData(FADE, FlxColor.BLACK, 0.7, new FlxPoint(0, 1),
+			{asset: diamond, width: 32, height: 32}, new FlxRect(-200, -200, FlxG.width * 1.4, FlxG.height * 1.4));
+
+		transIn = FlxTransitionableState.defaultTransIn;
+		transOut = FlxTransitionableState.defaultTransOut;
 
 		startIntro();
 	}
 
 	var logoBl:FlxSprite;
-	var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
 
@@ -81,7 +92,7 @@ class TitleState extends MusicBeatState
 		bgTitle.antialiasing = true;
 		bgTitle.updateHitbox();
 
-		logoBl = new FlxSprite(0, -100);
+		logoBl = new FlxSprite(230, -100);
 		logoBl.frames = Paths.getSparrowAtlas("logoBumpin");
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
@@ -92,14 +103,8 @@ class TitleState extends MusicBeatState
 		bgGrad.antialiasing = true;
 		bgGrad.updateHitbox();
 
-		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
-		gfDance.frames = Paths.getSparrowAtlas("gfDanceTitle");
-		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-		gfDance.antialiasing = true;
 		add(bgTitle);
 		add(bgGrad);
-		add(gfDance);
 		add(logoBl);
 
 		titleText = new FlxSprite(100, FlxG.height * 0.8);
@@ -140,7 +145,7 @@ class TitleState extends MusicBeatState
 				transitioning = true;
 				// FlxG.sound.music.stop();
 
-				new FlxTimer().start(2, function(tmr:FlxTimer)
+				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
 					// Check if version is outdated
 					FlxG.switchState(new MainMenuState());
@@ -159,12 +164,6 @@ class TitleState extends MusicBeatState
 		logoBl.animation.play('bump', true);
 		danceLeft = !danceLeft;
 
-		if (danceLeft)
-			gfDance.animation.play('danceRight', true);
-		else
-			gfDance.animation.play('danceLeft', true);
-
-		FlxG.log.add(curBeat);
 	}
 
 	var skippedIntro:Bool = false;

@@ -26,6 +26,7 @@ class DialogueBox extends FlxSpriteGroup
 	var dialogueFinished:Bool = false;
 
 	var dropText:FlxText;
+	var skipText:FlxText;
 
 	public var finishThing:Void->Void;
 
@@ -107,6 +108,18 @@ class DialogueBox extends FlxSpriteGroup
 				box.animation.addByPrefix('normalOpen', 'Hypnotoid-box', 24, false);
 				box.animation.addByIndices('normal', 'Hypnotoid-box', [4], "", 24);
 				box.scrollFactor.set(0.2, 0.2);
+			case 'night-circus':
+				box.frames = FlxAtlasFrames.fromSparrow('assets/images/Hypnotoid-bos.png',
+					'assets/images/Hypnotoid-bos.xml');
+				box.animation.addByPrefix('normalOpen', 'Hypnotoid-box', 24, false);
+				box.animation.addByIndices('normal', 'Hypnotoid-box', [4], "", 24);
+				box.scrollFactor.set(0.2, 0.2);
+			case 'hypnotic-doom':
+				box.frames = FlxAtlasFrames.fromSparrow('assets/images/Hypnotoid-bos.png',
+					'assets/images/Hypnotoid-bos.xml');
+				box.animation.addByPrefix('normalOpen', 'Hypnotoid-box', 24, false);
+				box.animation.addByIndices('normal', 'Hypnotoid-box', [4], "", 24);
+	 			box.scrollFactor.set(0.2, 0.2);
 			case 'roses':
 				FlxG.sound.play('assets/sounds/ANGRY_TEXT_BOX' + TitleState.soundExt);
 
@@ -136,7 +149,18 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			// box.flipX = true;
 		}
-
+		switch(Config.language){
+			case "Spanish":
+		skipText = new FlxText(275, 680, Std.int(FlxG.width * 0.58), "Presiona ESPACIO para saltar el diálogo\n", 30);
+			default:
+		skipText = new FlxText(325, 680, Std.int(FlxG.width * 0.58), "Press SPACE to skip the dialogue.\n", 30);
+		}
+		skipText.scrollFactor.set(0, 0);
+		skipText.font = 'VCR OSD Mono';
+		skipText.color = 0xFF000000;
+		add(skipText);
+		
+		
 		dropText = new FlxText(60, 430, Std.int(FlxG.width * 0.88), "", 45 );
 		dropText.font = 'Ticketing';
 		dropText.color = 0xFFFFFFFF;
@@ -185,6 +209,29 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			startDialogue();
 			dialogueStarted = true;
+		}
+
+		if(FlxG.keys.justPressed.SPACE && !isEnding){
+
+			isEnding = true;
+			new FlxTimer().start(0.2, function(tmr:FlxTimer)
+				{
+					box.alpha -= 1 / 5;
+					bgFade.alpha -= 1 / 5 * 0.7;
+					portraitLeft.visible = false;
+					portraitRight.visible = false;
+					portraitMiddle.visible = false;
+					swagDialogue.alpha -= 1 / 5;
+					dropText.alpha = swagDialogue.alpha;
+					skipText.alpha = swagDialogue.alpha;
+				}, 5);
+
+				new FlxTimer().start(1.2, function(tmr:FlxTimer)
+				{
+					finishThing();
+					kill();
+				});
+
 		}
 
 		if (FlxG.keys.justPressed.ANY)
@@ -414,6 +461,26 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					portraitRight.visible = true;
 					portraitRight.animation.play('enter');
+				}
+			case 'HY3':
+				portraitRight.visible = false;
+				portraitMiddle.visible = false;
+				portraitLeft.frames = Paths.getSparrowAtlas('dialogue/HYP3');
+				if (!portraitLeft.visible)
+				{
+					portraitLeft.visible = true;
+					portraitLeft.animation.play('enter');
+					box.flipX = false;
+				}
+			case 'HY3Bad':
+				portraitRight.visible = false;
+				portraitMiddle.visible = false;
+				portraitLeft.frames = Paths.getSparrowAtlas('dialogue/HYP3tired');
+				if (!portraitLeft.visible)
+				{
+					portraitLeft.visible = true;
+					portraitLeft.animation.play('enter');
+					box.flipX = false;
 				}
 		}
 	}
